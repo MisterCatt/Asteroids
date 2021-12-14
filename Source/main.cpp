@@ -1,4 +1,5 @@
 #include "Screen.h"
+#include "Asteroids.h"
 
 int screenWidth = 1000;
 int screenHeight = 1000;
@@ -29,24 +30,27 @@ unsigned char a; for Alpha (255 = no transparency) added to the Color struct, dr
 int main(int argc, char** argv)
 {
 	Screen screen(screenWidth, screenHeight, "Galba");
+	Asteroids game(screen);
 
 #pragma region Example Code Start - Remove Before Handin!
-	Sound sound = screen.LoadSound("assets/test.ogg");
-	Sprite sprite = screen.LoadSprite("assets/test.bmp");
-	sprite.texture.src = { 10,10,50,50 };
-	sprite.origin = { 25,25 };
-	sprite.angle = 45;
-	sprite.position = { 100,100 };
+	//Sound sound = screen.LoadSound("assets/test.ogg");
+	//Sprite sprite = screen.LoadSprite("assets/test.bmp");
+	//sprite.texture.src = { 10,10,50,50 };
+	//sprite.origin = { 25,25 };
+	//sprite.angle = 45;
+	//sprite.position = { 100,100 };
 #pragma endregion;
 
  	while (screen.IsOpen())
 	{
 		screen.Clear();
 
+		game.GameStart(screen);
+
 #pragma region Example Code Start - Remove Before Handin!
-		screen.PlaySound(sound);
+		/*screen.PlaySound(sound);
 		screen.DrawSprite(sprite);
-		screen.DrawText(200, 200, { 255,255,255,255 }, "Testing Scale", 4);
+		screen.DrawText(200, 200, { 255,255,255,255 }, "Testing Scale", 4);*/
 #pragma endregion;
 
 		screen.Display();
